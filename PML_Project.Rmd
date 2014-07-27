@@ -154,7 +154,9 @@ train_prediction <- predict(rf_model, trainCleanFinal)
 
 train_correctly_predicted_rows <- length(which(train_prediction==trainCleanFinal$classe))
 in_sample_error <- 100 * (1.0-(1.0*train_correctly_predicted_rows/train_total_rows))
+```
 
+```{r cache=TRUE}
 table(train_prediction, trainCleanFinal$classe)
 ```
 The in-sample error rate for the learnt model is `r in_sample_error`%.
@@ -170,7 +172,9 @@ test_prediction <- predict(rf_model, testCleanFinal)
 
 test_correctly_predicted_rows <- length(which(test_prediction==testCleanFinal$classe))
 out_of_sample_error <- 100 * (1.0-(1.0*test_correctly_predicted_rows/test_total_rows))
+```
 
+```{r cache=TRUE}
 table(test_prediction, testCleanFinal$classe)
 ```
 The out-of-sample error rate for the learnt model is `r out_of_sample_error`%.

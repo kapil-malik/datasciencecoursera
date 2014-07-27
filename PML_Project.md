@@ -237,8 +237,22 @@ train_prediction <- predict(rf_model, trainCleanFinal)
 
 train_correctly_predicted_rows <- length(which(train_prediction == trainCleanFinal$classe))
 in_sample_error <- 100 * (1 - (1 * train_correctly_predicted_rows/train_total_rows))
+```
 
+
+
+```r
 table(train_prediction, trainCleanFinal$classe)
+```
+
+```
+##                 
+## train_prediction    A    B    C    D    E
+##                A 4464    0    0    0    0
+##                B    0 3038    0    0    0
+##                C    0    0 2738    0    0
+##                D    0    0    0 2573    0
+##                E    0    0    0    0 2886
 ```
 
 The in-sample error rate for the learnt model is 0%.
@@ -255,8 +269,22 @@ test_prediction <- predict(rf_model, testCleanFinal)
 
 test_correctly_predicted_rows <- length(which(test_prediction == testCleanFinal$classe))
 out_of_sample_error <- 100 * (1 - (1 * test_correctly_predicted_rows/test_total_rows))
+```
 
+
+
+```r
 table(test_prediction, testCleanFinal$classe)
+```
+
+```
+##                
+## test_prediction    A    B    C    D    E
+##               A 1116    1    0    0    0
+##               B    0  758    1    0    0
+##               C    0    0  683    0    0
+##               D    0    0    0  643    1
+##               E    0    0    0    0  720
 ```
 
 The out-of-sample error rate for the learnt model is 0.0765%.
